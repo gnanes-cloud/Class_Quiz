@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Class Quiz Competition</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HOME -->
+
+    <div id="homeScreen" class="screen">
+
+        <h1>🎯 Class Quiz Competition</h1>
+
+        <p>Test your knowledge in 3 exciting rounds!</p>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter your name"
+        >
+
+        <input
+            type="text"
+            id="registerNumber"
+            placeholder="Enter register number"
+        >
+
+        <div class="round-info">
+
+            <div>
+                <h3>🟢 Round 1</h3>
+                <p>Easy</p>
+                <p>5 × 1 = 5 marks</p>
+            </div>
+
+            <div>
+                <h3>🟡 Round 2</h3>
+                <p>Medium</p>
+                <p>5 × 2 = 10 marks</p>
+            </div>
+
+            <div>
+                <h3>🔴 Round 3</h3>
+                <p>Hard</p>
+                <p>5 × 3 = 15 marks</p>
+            </div>
+
+        </div>
+
+        <button onclick="startQuiz()">
+            START QUIZ
+        </button>
+
+    </div>
+
+
+    <!-- QUIZ -->
+
+    <div id="quizScreen" class="screen hidden">
+
+        <div class="top">
+
+            <h3 id="roundTitle">
+                Round 1
+            </h3>
+
+            <div id="timer">
+                15
+            </div>
+
+        </div>
+
+        <div class="progress">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+        <p id="questionNumber"></p>
+
+        <h2 id="question"></h2>
+
+        <div id="answers"></div>
+
+        <button
+            id="nextButton"
+            onclick="nextQuestion()"
+            disabled
+        >
+            NEXT
+        </button>
+
+    </div>
+
+
+    <!-- ROUND RESULT -->
+
+    <div
+        id="roundResultScreen"
+        class="screen hidden"
+    >
+
+        <h1>🎉 Round Completed!</h1>
+
+        <h2 id="roundResultTitle"></h2>
+
+        <p id="roundScore"></p>
+
+        <button onclick="continueRound()">
+            CONTINUE
+        </button>
+
+    </div>
+
+
+    <!-- FINAL RESULT -->
+
+    <div id="finalScreen" class="screen hidden">
+
+        <h1>🏆 Quiz Completed!</h1>
+
+        <h2 id="studentResultName"></h2>
+
+        <div class="result">
+
+            <p>
+                Round 1:
+                <strong id="score1"></strong>
+            </p>
+
+            <p>
+                Round 2:
+                <strong id="score2"></strong>
+            </p>
+
+            <p>
+                Round 3:
+                <strong id="score3"></strong>
+            </p>
+
+            <hr>
+
+            <h2>
+                Total:
+                <span id="totalScore"></span>
+            </h2>
+
+            <h3>
+                Percentage:
+                <span id="percentage"></span>
+            </h3>
+
+            <h2 id="finalMessage"></h2>
+
+        </div>
+
+        <p>
+            Your result has been submitted successfully.
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
