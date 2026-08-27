@@ -1,1180 +1,638 @@
-// =====================================
-// CLASS QUIZ - 3 ROUNDS
-// =====================================
-
-
-// =====================================
-// GOOGLE APPS SCRIPT URL
-// =====================================
-
-// After creating Google Apps Script,
-// paste your Web App URL here.
-
-const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwpH2Y9j7tBWcyeb0vQkIOCuksnowQUuDEKq-m4bb32EbH1N8ctPqeoIuGZNg9amLt9/exec";
-
-
-// =====================================
-// QUESTIONS
-// =====================================
-
-const quizData = [
-
-    // ================================
-    // ROUND 1
-    // ================================
-
-    {
-
-        name: "Round 1 - Easy",
-
-        marks: 1,
-
-        questions: [
-
-            {
-                question:
-                    "What does HTML stand for?",
-
-                answers: [
-                    "Hyper Text Markup Language",
-                    "High Text Machine Language",
-                    "Hyperlinks Text Mark Language",
-                    "Home Tool Markup Language"
-                ],
-
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "Which planet is known as the Red Planet?",
-
-                answers: [
-                    "Earth",
-                    "Mars",
-                    "Jupiter",
-                    "Venus"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "How many days are there in a week?",
-
-                answers: [
-                    "5",
-                    "6",
-                    "7",
-                    "8"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "Which device is used to type text?",
-
-                answers: [
-                    "Monitor",
-                    "Keyboard",
-                    "Speaker",
-                    "Printer"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "What is 10 + 5?",
-
-                answers: [
-                    "10",
-                    "15",
-                    "20",
-                    "25"
-                ],
-
-                correct: 1
-            }
-
-        ]
-
-    },
-
-
-    // ================================
-    // ROUND 2
-    // ================================
-
-    {
-
-        name: "Round 2 - Medium",
-
-        marks: 2,
-
-        questions: [
-
-            {
-                question:
-                    "Which data structure follows FIFO?",
-
-                answers: [
-                    "Stack",
-                    "Queue",
-                    "Tree",
-                    "Graph"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which language is used for webpage styling?",
-
-                answers: [
-                    "HTML",
-                    "CSS",
-                    "Python",
-                    "SQL"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "What does CPU stand for?",
-
-                answers: [
-                    "Central Processing Unit",
-                    "Computer Processing Unit",
-                    "Central Program Unit",
-                    "Computer Program Utility"
-                ],
-
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "Which SQL command retrieves data?",
-
-                answers: [
-                    "INSERT",
-                    "UPDATE",
-                    "SELECT",
-                    "DELETE"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "Which protocol is used for websites?",
-
-                answers: [
-                    "HTTP",
-                    "FTP",
-                    "SMTP",
-                    "SSH"
-                ],
-
-                correct: 0
-            }
-
-        ]
-
-    },
-
-
-    // ================================
-    // ROUND 3
-    // ================================
-
-    {
-
-        name: "Round 3 - Hard",
-
-        marks: 3,
-
-        questions: [
-
-            {
-                question:
-                    "What is the time complexity of binary search?",
-
-                answers: [
-                    "O(n)",
-                    "O(n²)",
-                    "O(log n)",
-                    "O(n log n)"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "Which algorithm finds shortest paths in a graph with non-negative edge weights?",
-
-                answers: [
-                    "Bubble Sort",
-                    "Dijkstra's Algorithm",
-                    "Binary Search",
-                    "Linear Search"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which normal form removes partial dependency?",
-
-                answers: [
-                    "1NF",
-                    "2NF",
-                    "3NF",
-                    "BCNF"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which learning method uses labelled data?",
-
-                answers: [
-                    "Supervised Learning",
-                    "Unsupervised Learning",
-                    "Reinforcement Learning",
-                    "Random Learning"
-                ],
-
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "Which data structure is commonly used for recursion?",
-
-                answers: [
-                    "Queue",
-                    "Stack",
-                    "Heap",
-                    "Graph"
-                ],
-
-                correct: 1
-            }
-
-        ]
-
-    }
-
-];
-
-
-// =====================================
-// VARIABLES
-// =====================================
-
-let currentRound = 0;
-
-let currentQuestion = 0;
-
-let roundScore = 0;
-
-let totalScore = 0;
-
-let roundScores = [0, 0, 0];
-
-let timeLeft = 15;
-
-let timer;
-
-let answered = false;
-
-let studentName = "";
-
-let registerNumber = "";
-
-
-// =====================================
-// ELEMENTS
-// =====================================
-
-const homeScreen =
-    document.getElementById("homeScreen");
-
-const quizScreen =
-    document.getElementById("quizScreen");
-
-const roundResultScreen =
-    document.getElementById(
-        "roundResultScreen"
-    );
-
-const finalScreen =
-    document.getElementById(
-        "finalScreen"
-    );
-
-const question =
-    document.getElementById("question");
-
-const answers =
-    document.getElementById("answers");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-
-// =====================================
-// START QUIZ
-// =====================================
-
-function startQuiz() {
-
-    studentName =
-        document.getElementById(
-            "studentName"
-        ).value.trim();
-
-
-    registerNumber =
-        document.getElementById(
-            "registerNumber"
-        ).value.trim();
-
-
-    if (studentName === "") {
-
-        alert("Please enter your name.");
-
-        return;
-    }
-
-
-    if (registerNumber === "") {
-
-        alert(
-            "Please enter your register number."
-        );
-
-        return;
-    }
-
-
-    currentRound = 0;
-
-    currentQuestion = 0;
-
-    roundScore = 0;
-
-    totalScore = 0;
-
-    roundScores = [0, 0, 0];
-
-
-    homeScreen.classList.add(
-        "hidden"
-    );
-
-    quizScreen.classList.remove(
-        "hidden"
-    );
-
-
-    loadQuestion();
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 
-// =====================================
-// LOAD QUESTION
-// =====================================
+/* =========================
+   BODY
+========================= */
 
-function loadQuestion() {
+body {
+    font-family: Arial, sans-serif;
 
-    clearInterval(timer);
+    min-height: 100vh;
 
-    answered = false;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    nextButton.disabled = true;
+    padding: 20px;
 
-
-    const round =
-        quizData[currentRound];
-
-
-    const q =
-        round.questions[
-            currentQuestion
-        ];
-
-
-    document.getElementById(
-        "roundTitle"
-    ).innerText = round.name;
-
-
-    document.getElementById(
-        "questionNumber"
-    ).innerText =
-        `Question ${
-            currentQuestion + 1
-        } of ${
-            round.questions.length
-        }`;
-
-
-    question.innerText =
-        q.question;
-
-
-    answers.innerHTML = "";
-
-
-    const progress =
-        (currentQuestion /
-            round.questions.length) *
-        100;
-
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        progress + "%";
-
-
-    q.answers.forEach(
-        (answer, index) => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.innerText =
-                answer;
-
-
-            button.classList.add(
-                "answer"
-            );
-
-
-            button.onclick =
-                function () {
-
-                    selectAnswer(
-                        button,
-                        index
-                    );
-
-                };
-
-
-            answers.appendChild(
-                button
-            );
-
-        }
-    );
-
-
-    startTimer();
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
 }
 
 
-// =====================================
-// TIMER
-// =====================================
+/* =========================
+   CONTAINER
+========================= */
 
-function startTimer() {
-
-    timeLeft = 15;
-
-
-    document.getElementById(
-        "timer"
-    ).innerText =
-        "Time: " + timeLeft;
-
-
-    timer = setInterval(
-        function () {
-
-            timeLeft--;
-
-
-            document.getElementById(
-                "timer"
-            ).innerText =
-                "Time: " +
-                timeLeft;
-
-
-            if (timeLeft <= 0) {
-
-                clearInterval(timer);
-
-                timeUp();
-
-            }
-
-        },
-        1000
-    );
+.container {
+    width: 100%;
+    max-width: 650px;
 }
 
 
-// =====================================
-// SELECT ANSWER
-// =====================================
+/* =========================
+   SCREEN
+========================= */
 
-function selectAnswer(
-    button,
-    selectedIndex
-) {
+.screen {
+    background: white;
 
-    if (answered) {
+    padding: 35px;
 
-        return;
+    border-radius: 20px;
 
-    }
+    text-align: center;
 
-
-    answered = true;
-
-    clearInterval(timer);
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.2);
+}
 
 
-    const round =
-        quizData[currentRound];
+/* HIDE */
+
+.hidden {
+    display: none !important;
+}
 
 
-    const q =
-        round.questions[
-            currentQuestion
-        ];
+/* =========================
+   HEADINGS
+========================= */
+
+h1 {
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
 
 
-    const allButtons =
-        document.querySelectorAll(
-            ".answer"
-        );
+/* =========================
+   PARAGRAPH
+========================= */
+
+.screen > p {
+    color: #666;
+    margin-bottom: 20px;
+}
 
 
-    allButtons.forEach(
-        btn => {
+/* =========================
+   INPUT
+========================= */
 
-            btn.disabled = true;
+input {
+    width: 100%;
 
-        }
-    );
+    padding: 14px;
 
+    margin: 8px 0;
 
-    if (
-        selectedIndex ===
-        q.correct
-    ) {
+    border: 1px solid #ccc;
 
-        button.classList.add(
-            "correct"
-        );
+    border-radius: 8px;
 
+    font-size: 16px;
 
-        roundScore +=
-            round.marks;
+    outline: none;
+}
 
-    } else {
-
-        button.classList.add(
-            "wrong"
-        );
+input:focus {
+    border-color: #667eea;
+}
 
 
-        allButtons[
-            q.correct
-        ].classList.add(
-            "correct"
-        );
+/* =========================
+   ROUND INFORMATION
+========================= */
 
+.round-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin: 25px 0;
+}
+
+
+.round-info div {
+    background: #f5f5f5;
+
+    padding: 18px 8px;
+
+    border-radius: 12px;
+}
+
+
+.round-info h3 {
+    margin-bottom: 8px;
+}
+
+
+.round-info p {
+    font-size: 13px;
+
+    margin: 5px 0;
+
+    color: #666;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+
+    background: #667eea;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+button:disabled {
+    background: #aaa;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   QUIZ TOP
+========================= */
+
+.top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+#roundTitle {
+    font-size: 20px;
+}
+
+
+#timer {
+    background: #ff4757;
+
+    color: white;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress {
+    width: 100%;
+
+    height: 10px;
+
+    background: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 20px;
+}
+
+
+#progressBar {
+    height: 100%;
+
+    width: 0%;
+
+    background: #667eea;
+
+    transition: 0.3s;
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+#questionNumber {
+    color: #777;
+
+    margin-bottom: 15px;
+}
+
+
+#question {
+    margin-bottom: 25px;
+
+    font-size: 23px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+#answers {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.answer {
+    width: 100%;
+
+    text-align: left;
+
+    background: #f2f2f2;
+
+    color: #222;
+
+    border: 2px solid transparent;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+
+.answer:hover {
+    background: #e8e8e8;
+}
+
+
+.answer.correct {
+    background: #d4edda;
+
+    border-color: #28a745;
+
+    color: #155724;
+}
+
+
+.answer.wrong {
+    background: #f8d7da;
+
+    border-color: #dc3545;
+
+    color: #721c24;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+    background: #f5f5f5;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    margin: 25px 0;
+}
+
+
+.result p {
+    font-size: 18px;
+
+    margin: 12px;
+}
+
+
+.result hr {
+    margin: 20px 0;
+
+    border: none;
+
+    border-top: 1px solid #ddd;
+}
+
+
+/* =================================================
+   LEADERBOARD
+================================================= */
+
+#leaderboardScreen {
+    text-align: center;
+}
+
+
+#leaderboardScreen h1 {
+    margin-bottom: 10px;
+}
+
+
+#leaderboardScreen > p {
+    color: #666;
+
+    margin-bottom: 20px;
+}
+
+
+/* Leaderboard box */
+
+.leaderboard {
+
+    width: 100%;
+
+    margin: 20px 0;
+
+    text-align: left;
+
+    max-height: 450px;
+
+    overflow-y: auto;
+
+    padding: 5px;
+}
+
+
+/* Each student */
+
+.leader-row {
+
+    display: grid;
+
+    grid-template-columns:
+        60px 1fr 100px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    margin-bottom: 8px;
+
+    background: #f5f5f5;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    border: 1px solid #ddd;
+}
+
+
+/* =========================
+   TOP 3
+========================= */
+
+
+/* 🥇 FIRST */
+
+.leader-row.top-one {
+
+    background: #fff3cd;
+
+    border: 2px solid #ffc107;
+}
+
+
+/* 🥈 SECOND */
+
+.leader-row.top-two {
+
+    background: #e2e3e5;
+
+    border: 2px solid #aaa;
+}
+
+
+/* 🥉 THIRD */
+
+.leader-row.top-three {
+
+    background: #f8d7da;
+
+    border: 2px solid #dc3545;
+}
+
+
+/* =========================
+   RANK
+========================= */
+
+.rank {
+
+    font-size: 20px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   STUDENT NAME
+========================= */
+
+.player-name {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* Register number */
+
+.player-name small {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: normal;
+
+    margin-top: 4px;
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+.player-score {
+
+    text-align: right;
+
+    font-size: 17px;
+
+    color: #333;
+}
+
+
+/* =========================
+   LEADERBOARD BUTTONS
+========================= */
+
+#leaderboardScreen button {
+
+    margin: 5px;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.leaderboard::-webkit-scrollbar {
+
+    width: 7px;
+}
+
+
+.leaderboard::-webkit-scrollbar-track {
+
+    background: #eee;
+
+    border-radius: 10px;
+}
+
+
+.leaderboard::-webkit-scrollbar-thumb {
+
+    background: #aaa;
+
+    border-radius: 10px;
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
     }
 
 
-    nextButton.disabled = false;
-}
+    .screen {
+        padding: 25px 18px;
 
-
-// =====================================
-// TIME UP
-// =====================================
-
-function timeUp() {
-
-    if (answered) {
-
-        return;
-
+        border-radius: 15px;
     }
 
 
-    answered = true;
-
-
-    const round =
-        quizData[currentRound];
-
-
-    const q =
-        round.questions[
-            currentQuestion
-        ];
-
-
-    const allButtons =
-        document.querySelectorAll(
-            ".answer"
-        );
-
-
-    allButtons.forEach(
-        btn => {
-
-            btn.disabled = true;
-
-        }
-    );
-
-
-    allButtons[
-        q.correct
-    ].classList.add(
-        "correct"
-    );
-
-
-    nextButton.disabled = false;
-}
-
-
-// =====================================
-// NEXT QUESTION
-// =====================================
-
-function nextQuestion() {
-
-    clearInterval(timer);
-
-
-    currentQuestion++;
-
-
-    const round =
-        quizData[currentRound];
-
-
-    if (
-        currentQuestion <
-        round.questions.length
-    ) {
-
-        loadQuestion();
-
-    } else {
-
-        finishRound();
-
-    }
-}
-
-
-// =====================================
-// FINISH ROUND
-// =====================================
-
-function finishRound() {
-
-    clearInterval(timer);
-
-
-    roundScores[
-        currentRound
-    ] = roundScore;
-
-
-    totalScore += roundScore;
-
-
-    quizScreen.classList.add(
-        "hidden"
-    );
-
-
-    roundResultScreen.classList.remove(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "roundResultTitle"
-    ).innerText =
-        quizData[
-            currentRound
-        ].name;
-
-
-    document.getElementById(
-        "roundScore"
-    ).innerText =
-        "Your score: " +
-        roundScore +
-        " marks";
-}
-
-
-// =====================================
-// CONTINUE
-// =====================================
-
-function continueRound() {
-
-    currentRound++;
-
-    currentQuestion = 0;
-
-    roundScore = 0;
-
-
-    roundResultScreen.classList.add(
-        "hidden"
-    );
-
-
-    if (
-        currentRound >=
-        quizData.length
-    ) {
-
-        showFinalResult();
-
-    } else {
-
-        quizScreen.classList.remove(
-            "hidden"
-        );
-
-        loadQuestion();
-
-    }
-}
-
-
-// =====================================
-// FINAL RESULT
-// =====================================
-
-function showFinalResult() {
-
-    finalScreen.classList.remove(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "studentResultName"
-    ).innerText =
-        studentName +
-        " (" +
-        registerNumber +
-        ")";
-
-
-    document.getElementById(
-        "score1"
-    ).innerText =
-        roundScores[0] +
-        " / 5";
-
-
-    document.getElementById(
-        "score2"
-    ).innerText =
-        roundScores[1] +
-        " / 10";
-
-
-    document.getElementById(
-        "score3"
-    ).innerText =
-        roundScores[2] +
-        " / 15";
-
-
-    document.getElementById(
-        "totalScore"
-    ).innerText =
-        totalScore +
-        " / 30";
-
-
-    const percentage =
-        (totalScore / 30) * 100;
-
-
-    document.getElementById(
-        "percentage"
-    ).innerText =
-        percentage.toFixed(1) +
-        "%";
-
-
-    if (percentage >= 80) {
-
-        document.getElementById(
-            "finalMessage"
-        ).innerText =
-            "🌟 Excellent!";
-
-    } else if (percentage >= 60) {
-
-        document.getElementById(
-            "finalMessage"
-        ).innerText =
-            "👏 Great Job!";
-
-    } else if (percentage >= 40) {
-
-        document.getElementById(
-            "finalMessage"
-        ).innerText =
-            "👍 Good Attempt!";
-
-    } else {
-
-        document.getElementById(
-            "finalMessage"
-        ).innerText =
-            "📚 Keep Learning!";
-
+    .round-info {
+        grid-template-columns: 1fr;
     }
 
 
-    // SEND RESULT ONLINE
-
-    saveResult();
-}
-
-
-// =====================================
-// SAVE RESULT TO GOOGLE SHEET
-// =====================================
-
-function saveResult() {
-
-    if (
-        GOOGLE_SCRIPT_URL ===
-        "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE"
-    ) {
-
-        console.log(
-            "Google Script URL not added."
-        );
-
-        return;
+    #question {
+        font-size: 20px;
     }
 
 
-    const data = {
-
-        name: studentName,
-
-        registerNumber:
-            registerNumber,
-
-        round1:
-            roundScores[0],
-
-        round2:
-            roundScores[1],
-
-        round3:
-            roundScores[2],
-
-        total:
-            totalScore,
-
-        percentage:
-            (
-                (totalScore / 30) *
-                100
-            ).toFixed(1)
-
-    };
-
-
-    fetch(
-        GOOGLE_SCRIPT_URL,
-        {
-
-            method: "POST",
-
-            mode: "no-cors",
-
-            headers: {
-                "Content-Type":
-                    "text/plain"
-            },
-
-            body:
-                JSON.stringify(data)
-
-        }
-    )
-    .then(
-        () => {
-
-            console.log(
-                "Result submitted."
-            );
-
-        }
-    )
-    .catch(
-        error => {
-
-            console.log(
-                "Submission error:",
-                error
-            );
-
-        }
-    );
-    // =====================================
-// SHOW LEADERBOARD
-// =====================================
-
-function showLeaderboard() {
-
-    finalScreen.classList.add(
-        "hidden"
-    );
-
-    document
-        .getElementById(
-            "leaderboardScreen"
-        )
-        .classList.remove(
-            "hidden"
-        );
-
-
-    loadLeaderboard();
-}
-
-
-// =====================================
-// LOAD LEADERBOARD
-// =====================================
-
-function loadLeaderboard() {
-
-    const leaderboard =
-        document.getElementById(
-            "leaderboard"
-        );
-
-
-    leaderboard.innerHTML =
-        "Loading leaderboard...";
-
-
-    fetch(GOOGLE_SCRIPT_URL)
-
-        .then(response =>
-            response.json()
-        )
-
-        .then(data => {
-
-            displayLeaderboard(data);
-
-        })
-
-        .catch(error => {
-
-            console.error(error);
-
-            leaderboard.innerHTML =
-                "Unable to load leaderboard.";
-
-        });
-}
-
-
-// =====================================
-// DISPLAY LEADERBOARD
-// =====================================
-
-function displayLeaderboard(data) {
-
-    const leaderboard =
-        document.getElementById(
-            "leaderboard"
-        );
-
-
-    leaderboard.innerHTML = "";
-
-
-    if (data.length === 0) {
-
-        leaderboard.innerHTML =
-            "No results yet.";
-
-        return;
+    .top {
+        gap: 10px;
     }
 
 
-    data.forEach(
-        (student, index) => {
-
-            const row =
-                document.createElement(
-                    "div"
-                );
+    #roundTitle {
+        font-size: 17px;
+    }
 
 
-            row.classList.add(
-                "leader-row"
-            );
+    #timer {
+        font-size: 14px;
+
+        padding: 7px 10px;
+    }
 
 
-            if (index === 0) {
+    /* MOBILE LEADERBOARD */
 
-                row.classList.add(
-                    "top-one"
-                );
+    .leader-row {
 
-            }
+        grid-template-columns:
+            45px 1fr 75px;
 
-            else if (index === 1) {
+        gap: 7px;
 
-                row.classList.add(
-                    "top-two"
-                );
+        padding: 12px 8px;
 
-            }
-
-            else if (index === 2) {
-
-                row.classList.add(
-                    "top-three"
-                );
-
-            }
+        font-size: 14px;
+    }
 
 
-            let rank =
-                index + 1;
+    .rank {
+        font-size: 16px;
+    }
 
 
-            let medal = "";
+    .player-score {
+        font-size: 14px;
+    }
 
 
-            if (rank === 1) {
-
-                medal = "🥇";
-
-            }
-
-            else if (rank === 2) {
-
-                medal = "🥈";
-
-            }
-
-            else if (rank === 3) {
-
-                medal = "🥉";
-
-            }
+    .player-name small {
+        font-size: 10px;
+    }
 
 
-            row.innerHTML = `
+    #leaderboardScreen button {
 
-                <div class="rank">
-                    ${medal} ${rank}
-                </div>
+        width: 100%;
 
-                <div class="player-name">
+        margin: 5px 0;
+    }
 
-                    ${student.name}
-
-                    <small>
-                        (${student.registerNumber})
-                    </small>
-
-                </div>
-
-                <div class="player-score">
-
-                    ${student.total}/30
-
-                </div>
-
-            `;
-
-
-            leaderboard.appendChild(
-                row
-            );
-
-        }
-    );
-}
-
-
-// =====================================
-// BACK TO RESULT
-// =====================================
-
-function backToResult() {
-
-    document
-        .getElementById(
-            "leaderboardScreen"
-        )
-        .classList.add(
-            "hidden"
-        );
-
-
-    finalScreen.classList.remove(
-        "hidden"
-    );
-}
 }
