@@ -14,7 +14,9 @@
 
 <div class="container">
 
-    <!-- HOME -->
+    <!-- ========================= -->
+    <!-- HOME SCREEN -->
+    <!-- ========================= -->
 
     <div id="homeScreen" class="screen">
 
@@ -63,7 +65,9 @@
     </div>
 
 
-    <!-- QUIZ -->
+    <!-- ========================= -->
+    <!-- QUIZ SCREEN -->
+    <!-- ========================= -->
 
     <div id="quizScreen" class="screen hidden">
 
@@ -74,10 +78,13 @@
             </h3>
 
             <div id="timer">
-                15
+                Time: 15
             </div>
 
         </div>
+
+
+        <!-- Progress bar -->
 
         <div class="progress">
 
@@ -85,11 +92,27 @@
 
         </div>
 
-        <p id="questionNumber"></p>
 
-        <h2 id="question"></h2>
+        <!-- Question number -->
+
+        <p id="questionNumber">
+            Question 1 of 5
+        </p>
+
+
+        <!-- Question -->
+
+        <h2 id="question">
+            Question will appear here
+        </h2>
+
+
+        <!-- Answer buttons -->
 
         <div id="answers"></div>
+
+
+        <!-- Next button -->
 
         <button
             id="nextButton"
@@ -102,7 +125,9 @@
     </div>
 
 
-    <!-- ROUND RESULT -->
+    <!-- ========================= -->
+    <!-- ROUND RESULT SCREEN -->
+    <!-- ========================= -->
 
     <div
         id="roundResultScreen"
@@ -111,96 +136,148 @@
 
         <h1>🎉 Round Completed!</h1>
 
-        <h2 id="roundResultTitle"></h2>
+        <h2 id="roundResultTitle">
+            Round 1
+        </h2>
 
-        <p id="roundScore"></p>
+        <p id="roundScore">
+            Your score: 0 marks
+        </p>
 
         <button onclick="continueRound()">
-            CONTINUE
+            CONTINUE TO NEXT ROUND
         </button>
 
     </div>
 
 
-    <!-- FINAL RESULT -->
+    <!-- ========================= -->
+    <!-- FINAL RESULT SCREEN -->
+    <!-- ========================= -->
 
-    <div id="finalScreen" class="screen hidden">
+    <div
+        id="finalScreen"
+        class="screen hidden"
+    >
 
         <h1>🏆 Quiz Completed!</h1>
 
-        <h2 id="studentResultName"></h2>
+        <h2 id="studentResultName">
+            Student
+        </h2>
+
 
         <div class="result">
 
             <p>
-                Round 1:
-                <strong id="score1"></strong>
+                🟢 Round 1:
+                <strong id="score1">0 / 5</strong>
             </p>
 
             <p>
-                Round 2:
-                <strong id="score2"></strong>
+                🟡 Round 2:
+                <strong id="score2">0 / 10</strong>
             </p>
 
             <p>
-                Round 3:
-                <strong id="score3"></strong>
+                🔴 Round 3:
+                <strong id="score3">0 / 15</strong>
             </p>
 
             <hr>
 
             <h2>
                 Total:
-                <span id="totalScore"></span>
+                <span id="totalScore">0 / 30</span>
             </h2>
 
             <h3>
                 Percentage:
-                <span id="percentage"></span>
+                <span id="percentage">0%</span>
             </h3>
 
-            <h2 id="finalMessage"></h2>
+            <h2 id="finalMessage">
+                🎉 Well Done!
+            </h2>
 
         </div>
 
+
         <p>
-            Your result has been submitted successfully.
+            ✅ Your result has been submitted successfully.
         </p>
-        <button onclick="showLeaderboard()">
-    🏆 View Leaderboard
-</button>
+
+
+        <!-- LEADERBOARD BUTTON -->
+
+        <button
+            onclick="showLeaderboard()"
+        >
+            🏆 VIEW LEADERBOARD
+        </button>
 
     </div>
 
-</div>
-<!-- LEADERBOARD -->
 
-<div
-    id="leaderboardScreen"
-    class="screen hidden"
->
-
-    <h1>🏆 Live Leaderboard</h1>
-
-    <p>
-        Highest score appears first
-    </p>
+    <!-- ========================= -->
+    <!-- LEADERBOARD SCREEN -->
+    <!-- ========================= -->
 
     <div
-        id="leaderboard"
-        class="leaderboard"
+        id="leaderboardScreen"
+        class="screen hidden"
     >
 
-        Loading leaderboard...
+        <h1>🏆 Live Leaderboard</h1>
+
+        <p>
+            Highest score appears first
+        </p>
+
+
+        <!-- Leaderboard will appear here -->
+
+        <div
+            id="leaderboard"
+            class="leaderboard"
+        >
+
+            <p>
+                Loading leaderboard...
+            </p>
+
+        </div>
+
+
+        <!-- Refresh leaderboard -->
+
+        <button
+            onclick="loadLeaderboard()"
+        >
+            🔄 REFRESH LEADERBOARD
+        </button>
+
+
+        <br><br>
+
+
+        <!-- Back button -->
+
+        <button
+            onclick="backToResult()"
+        >
+            ← BACK TO RESULT
+        </button>
 
     </div>
 
-    <button onclick="backToResult()">
-        ← Back to Result
-    </button>
-
 </div>
+
+
+<!-- JavaScript -->
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
