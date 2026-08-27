@@ -11,13 +11,12 @@
 // paste your Web App URL here.
 
 const GOOGLE_SCRIPT_URL =
-    "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+    "https://script.google.com/macros/s/AKfycbxtQgNfZWieiBNikCsIFN12HnKJqPR3k-uQxpBVb-QVsPAw0N_9CW0pFvWa6XAxp-7F/exec";
 
 
 // =====================================
 // QUESTIONS
 // =====================================
-
 const quizData = [
 
     // ================================
@@ -26,7 +25,7 @@ const quizData = [
 
     {
 
-        name: "Round 1 - Easy",
+        name: "Round 1 - Easy + Moderate ",
 
         marks: 1,
 
@@ -34,43 +33,13 @@ const quizData = [
 
             {
                 question:
-                    "What does HTML stand for?",
+                    "What is the main purpose of a Privacy Impact Assessment (PIA)? ",
 
                 answers: [
-                    "Hyper Text Markup Language",
-                    "High Text Machine Language",
-                    "Hyperlinks Text Mark Language",
-                    "Home Tool Markup Language"
-                ],
-
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "Which planet is known as the Red Planet?",
-
-                answers: [
-                    "Earth",
-                    "Mars",
-                    "Jupiter",
-                    "Venus"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "How many days are there in a week?",
-
-                answers: [
-                    "5",
-                    "6",
-                    "7",
-                    "8"
+                    " To improve the design of an application ",
+                    " To increase data storage capacity ",
+                    "To identify and reduce privacy risks ",
+                    "To increase the number of users of an application "
                 ],
 
                 correct: 2
@@ -79,13 +48,13 @@ const quizData = [
 
             {
                 question:
-                    "Which device is used to type text?",
+                    " Which of the following is an example of personal data? ",
 
                 answers: [
-                    "Monitor",
-                    "Keyboard",
-                    "Speaker",
-                    "Printer"
+                    "General weather information",
+                    "A person's photograph",
+                    "Company logo",
+                    "Public holiday list"
                 ],
 
                 correct: 1
@@ -94,107 +63,23 @@ const quizData = [
 
             {
                 question:
-                    "What is 10 + 5?",
+                    "A shopping app asks for a user's location to find nearby stores. What is the most appropriate privacy practice?",
 
                 answers: [
-                    "10",
-                    "15",
-                    "20",
-                    "25"
+                    "Store the user's location permanently ",
+                    "Share the location with advertising companies automatically",
+                    "Collect only the location information necessary for the service",
+                    "Continuously track the user even when the app is closed"
                 ],
 
-                correct: 1
-            }
-
-        ]
-
-    },
-
-
-    // ================================
-    // ROUND 2
-    // ================================
-
-    {
-
-        name: "Round 2 - Medium",
-
-        marks: 2,
-
-        questions: [
-
-            {
-                question:
-                    "Which data structure follows FIFO?",
-
                 answers: [
-                    "Stack",
-                    "Queue",
-                    "Tree",
-                    "Graph"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which language is used for webpage styling?",
-
-                answers: [
-                    "HTML",
-                    "CSS",
-                    "Python",
-                    "SQL"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "What does CPU stand for?",
-
-                answers: [
-                    "Central Processing Unit",
-                    "Computer Processing Unit",
-                    "Central Program Unit",
-                    "Computer Program Utility"
-                ],
-
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "Which SQL command retrieves data?",
-
-                answers: [
-                    "INSERT",
-                    "UPDATE",
-                    "SELECT",
-                    "DELETE"
+                    "Sell the information because it can help insurance companies assess customers",
+                    "Share anonymized information without checking whether users were informed",
+                    "Review the purpose, privacy implications, and applicable consent requirements before sharing",
+                    "Share the information only with insurance companies that have strong security systems"
                 ],
 
                 correct: 2
-            },
-
-
-            {
-                question:
-                    "Which protocol is used for websites?",
-
-                answers: [
-                    "HTTP",
-                    "FTP",
-                    "SMTP",
-                    "SSH"
-                ],
-
-                correct: 0
             }
 
         ]
@@ -208,7 +93,7 @@ const quizData = [
 
     {
 
-        name: "Round 3 - Hard",
+        name: "Round 3 - Challenging Ethical & Privacy Decision-Making",
 
         marks: 3,
 
@@ -216,58 +101,13 @@ const quizData = [
 
             {
                 question:
-                    "What is the time complexity of binary search?",
+                    "🤖 AI Recruitment Scenario : A company uses an AI system to screen job applications. The system analyzes applicants' resumes and past hiring data. An HR manager discovers that the system consistently gives lower scores to applicants from a particular group, even though the company cannot identify exactly why. What should the company do?",
 
                 answers: [
-                    "O(n)",
-                    "O(n²)",
-                    "O(log n)",
-                    "O(n log n)"
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "Which algorithm finds shortest paths in a graph with non-negative edge weights?",
-
-                answers: [
-                    "Bubble Sort",
-                    "Dijkstra's Algorithm",
-                    "Binary Search",
-                    "Linear Search"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which normal form removes partial dependency?",
-
-                answers: [
-                    "1NF",
-                    "2NF",
-                    "3NF",
-                    "BCNF"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "Which learning method uses labelled data?",
-
-                answers: [
-                    "Supervised Learning",
-                    "Unsupervised Learning",
-                    "Reinforcement Learning",
-                    "Random Learning"
+                    "Investigate the possible bias, evaluate the system's impact, and correct or replace it before relying on its decisions",
+                    "Continue using the system because it is based on historical company data",
+                    "Remove the demographic information from the final report while continuing to use the existing model",
+                    "Continue using it but manually review applicants with low scores"
                 ],
 
                 correct: 0
@@ -276,16 +116,61 @@ const quizData = [
 
             {
                 question:
-                    "Which data structure is commonly used for recursion?",
+                    "📱 Health App Scenario : A health app collects users' sleep patterns, heart rate, and exercise information. A marketing team proposes using this information to identify users who may be interested in health-related products. The privacy policy mentions that data may be used to 'improve user experience.' What should the company do?",
 
                 answers: [
-                    "Queue",
-                    "Stack",
-                    "Heap",
-                    "Graph"
+                    "Use the information only for users who have been using the app for more than six months",
+                    "Determine whether this new use is sufficiently covered by the original notice and obtain appropriate consent if necessary",
+                    "Use the information because marketing can be considered part of improving user experience",
+                    "Use the information after removing users' names"
                 ],
 
                 correct: 1
+            },
+
+
+            {
+                question:
+                    "🚨 Security vs Privacy Scenario : A smart-home company discovers that one of its devices has been hacked. Engineers suggest temporarily collecting detailed user activity logs to identify the attack. However, these logs contain sensitive information about users' daily routines. What is the best ethical approach?",
+
+                answers: [
+                    "Collect all available logs because security should always take priority ",
+                    "Avoid collecting logs because user privacy must never be compromised",
+                    "Collect the logs permanently so they can be used if another attack occurs",
+                    "Collect only the information necessary for investigating the incident, protect it strictly, and delete it when no longer required"
+                ],
+
+                correct: 3
+            },
+
+
+            {
+                question:
+                    "💳 Financial Data Scenario : Tricky 🔥 A financial app discovers that analyzing customers' transaction patterns could help detect fraud. However, the same analysis could also reveal highly sensitive information about customers' personal lives. What should the company prioritize when designing the system?",
+
+                answers: [
+                    "Allow employees to access the complete transaction history so suspicious activity can be investigated quickly",
+                    "Stop analyzing transaction data because privacy risks exist",
+                    "Use the minimum information necessary for fraud detection while applying strong safeguards and clearly defining its use ",
+                    "Collect as much transaction information as possible because fraud prevention is important "
+                ],
+
+                correct: 2
+            },
+
+
+            {
+                question:
+                    "🧑‍💻 Employee Monitoring Scenario : Most Tricky 🔥🔥 A company introduces software that records employees' computer activity to improve cybersecurity. The software can also capture screenshots and track activity outside working hours because employees sometimes use company laptops at home. What is the most ethically appropriate decision?",
+
+                answers: [
+                    "Continue monitoring outside working hours but delete the screenshots after 24 hours",
+                    "Monitor everything because the laptop belongs to the company",
+                    "Allow monitoring but inform employees that all activity may be recorded",
+                    "Limit monitoring to legitimate work and security purposes, minimize unnecessary collection, and clearly inform employees about the monitoring"
+                ],
+
+                correct: 3
             }
 
         ]
@@ -293,6 +178,7 @@ const quizData = [
     }
 
 ];
+
 
 
 // =====================================
@@ -897,7 +783,7 @@ function saveResult() {
 
     if (
         GOOGLE_SCRIPT_URL ===
-        "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE"
+        "https://script.google.com/macros/s/AKfycbxtQgNfZWieiBNikCsIFN12HnKJqPR3k-uQxpBVb-QVsPAw0N_9CW0pFvWa6XAxp-7F/exec"
     ) {
 
         console.log(
