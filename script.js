@@ -25,161 +25,241 @@ const quizData = [
 
     {
 
-        name: "Round 1 - Easy + Moderate ",
+        name: "Round 1 - Easy+Moderate",
 
         marks: 1,
 
         questions: [
 
             {
-                question:
-                    "What is the main purpose of a Privacy Impact Assessment (PIA)? ",
+    question: "What is the main purpose of a Privacy Impact Assessment (PIA)?",
+    answers: [
+        "To improve the design of an application",
+        "To increase data storage capacity",
+        "To identify and reduce privacy risks",
+        "To increase the number of users of an application"
+    ],
+    correct: 2
+},
 
-                answers: [
-                    " To improve the design of an application ",
-                    " To increase data storage capacity ",
-                    "To identify and reduce privacy risks ",
-                    "To increase the number of users of an application "
-                ],
+{
+    question: "Which of the following is an example of personal data?",
+    answers: [
+        "General weather information",
+        "A person's photograph",
+        "Company logo",
+        "Public holiday list"
+    ],
+    correct: 1
+},
 
-                correct: 2
-            },
+{
+    question: "A shopping app asks for a user's location to find nearby stores. What is the most appropriate privacy practice?",
+    answers: [
+        "Store the user's location permanently",
+        "Share the location with advertising companies automatically",
+        "Collect only the location information necessary for the service",
+        "Continuously track the user even when the app is closed"
+    ],
+    correct: 2
+},
 
+{
+    question: "What does user consent mean in a privacy context?",
+    answers: [
+        "Getting permission after clearly explaining what data is collected and why",
+        "Collecting information because the application is free",
+        "Allowing employees to decide what information to collect",
+        "Collecting information without informing the user"
+    ],
+    correct: 0
+},
 
-            {
-                question:
-                    " Which of the following is an example of personal data? ",
+{
+    question: "Who should normally have access to sensitive personal information?",
+    answers: [
+        "Any third-party company that requests it",
+        "All registered users",
+        "Anyone working in the organization",
+        "Only people who are authorized and need the information for their work"
+    ],
+    correct: 3
+},
 
-                answers: [
-                    "General weather information",
-                    "A person's photograph",
-                    "Company logo",
-                    "Public holiday list"
-                ],
+{
+    question: "Which of the following is a good privacy protection measure?",
+    answers: [
+        "Publishing student information online",
+        "Encrypting sensitive data",
+        "Giving access to all employees",
+        "Sharing passwords with everyone"
+    ],
+    correct: 1
+},
 
-                correct: 1
-            },
+{
+    question: "What is data minimization?",
+    answers: [
+        "Sharing information with fewer organizations",
+        "Deleting all information immediately",
+        "Collecting only the information necessary for a specific purpose",
+        "Collecting all available information for future use"
+    ],
+    correct: 2
+},
 
+{
+    question: "A bank employee can access the complete financial records of customers, although their job only requires access to basic account information. What is the best privacy practice?",
+    answers: [
+        "Give the employee access but monitor them continuously",
+        "Keep the access because the employee is trusted",
+        "Allow access but ask the employee not to view unnecessary information",
+        "Restrict the employee's access to the information required for their role"
+    ],
+    correct: 3
+},
 
-            {
-                question:
-                    "A shopping app asks for a user's location to find nearby stores. What is the most appropriate privacy practice?",
+{
+    question: "A company has finished using customer information for the purpose for which it was collected. What should it generally do?",
+    answers: [
+        "Keep the information forever in case it becomes useful",
+        "Share it with other companies",
+        "Securely delete or dispose of it when it is no longer needed",
+        "Sell the information before deleting it"
+    ],
+    correct: 2
+},
 
-                answers: [
-                    "Store the user's location permanently ",
-                    "Share the location with advertising companies automatically",
-                    "Collect only the location information necessary for the service",
-                    "Continuously track the user even when the app is closed"
-                ],
+{
+    question: "AI predicts that a patient has a high risk of cancer, but the doctor disagrees. What should be done?",
+    answers: [
+        "Tell the patient that AI is always more accurate",
+        "Ignore the AI completely",
+        "Review the AI result with further medical tests and expert judgment",
+        "Follow the AI result immediately"
+    ],
+    correct: 2
+},
+    // ================================
+    // ROUND 2
+    // ================================
 
-                answers: [
-                    "Sell the information because it can help insurance companies assess customers",
-                    "Share anonymized information without checking whether users were informed",
-                    "Review the purpose, privacy implications, and applicable consent requirements before sharing",
-                    "Share the information only with insurance companies that have strong security systems"
-                ],
+{
+    question: "🏥 Hospital App Scenario : A hospital app collects a patient's medical history to provide treatment. Later, the hospital wants to use the same information to send patients advertisements for medicines. What should the hospital do?",
+    answers: [
+        "Use the data because the patient already provided it to the hospital",
+        "Use the data because the advertisements may benefit the patient",
+        "Check whether the new use is permitted and obtain appropriate consent where required",
+        "Use the data but send advertisements only once a month"
+    ],
+    correct: 2
+},
 
-                correct: 2
-            }
+{
+    question: "🛒 Online Shopping Scenario : An online shopping app asks users for their location to provide nearby delivery options. The company later decides to continuously track users' locations to understand their daily movements. What is the most appropriate action?",
+    answers: [
+        "Continue tracking because users agreed to location access",
+        "Track users only when they are actively using the shopping service",
+        "Collect the location continuously but delete it after one year",
+        "Continue tracking because it helps the company improve its services"
+    ],
+    correct: 1
+},
 
-        ]
+{
+    question: "🏦 Banking Scenario : A bank employee can access customers' account details even though their job does not require access to financial information. The employee has never misused the data. What should the bank do?",
+    answers: [
+        "Keep the access because the employee is trustworthy",
+        "Keep the access but ask the employee not to view unnecessary information",
+        "Restrict access according to the employee's actual job responsibilities",
+        "Monitor the employee's activity while allowing the existing access"
+    ],
+    correct: 2
+},
 
-    },
+{
+    question: "🏨 Hotel Scenario : A hotel collects guests' phone numbers for booking confirmation. Later, the hotel wants to share the numbers with a partner company that offers travel packages. What should the hotel consider first?",
+    answers: [
+        "Whether sharing the information is consistent with the original purpose and properly authorized",
+        "Whether the partner company promises to protect the information",
+        "Whether the travel packages are useful to the hotel guests",
+        "Whether the hotel can delete the numbers after sharing them"
+    ],
+    correct: 0
+},
 
-
+{
+    question: "🏃 Fitness App Scenario 🔥 : A fitness app collects information about users' exercise routines and heart rate. The company discovers that this information could be valuable to insurance companies. What is the most ethical approach?",
+    answers: [
+        "Sell the information because it can help insurance companies assess customers",
+        "Share anonymized information without checking whether users were informed",
+        "Review the purpose, privacy implications, and applicable consent requirements before sharing",
+        "Share the information only with insurance companies that have strong security systems"
+    ],
+    correct: 2
+},
     // ================================
     // ROUND 3
     // ================================
 
-    {
 
-        name: "Round 3 - Challenging Ethical & Privacy Decision-Making",
+{
+    question: "🤖 AI Recruitment Scenario : A company uses an AI system to screen job applications. The system analyzes applicants' resumes and past hiring data. An HR manager discovers that the system consistently gives lower scores to applicants from a particular group, even though the company cannot identify exactly why. What should the company do?",
+    answers: [
+        "Investigate the possible bias, evaluate the system's impact, and correct or replace it before relying on its decisions",
+        "Continue using the system because it is based on historical company data",
+        "Remove the demographic information from the final report while continuing to use the existing model",
+        "Continue using it but manually review applicants with low scores"
+    ],
+    correct: 0
+},
 
-        marks: 3,
+{
+    question: "📱 Health App Scenario : A health app collects users' sleep patterns, heart rate, and exercise information. A marketing team proposes using this information to identify users who may be interested in health-related products. The privacy policy mentions that data may be used to 'improve user experience.' What should the company do?",
+    answers: [
+        "Use the information only for users who have been using the app for more than six months",
+        "Determine whether this new use is sufficiently covered by the original notice and obtain appropriate consent if necessary",
+        "Use the information because marketing can be considered part of improving user experience",
+        "Use the information after removing users' names"
+    ],
+    correct: 1
+},
 
-        questions: [
+{
+    question: "🚨 Security vs Privacy Scenario : A smart-home company discovers that one of its devices has been hacked. Engineers suggest temporarily collecting detailed user activity logs to identify the attack. However, these logs contain sensitive information about users' daily routines. What is the best ethical approach?",
+    answers: [
+        "Collect all available logs because security should always take priority",
+        "Avoid collecting logs because user privacy must never be compromised",
+        "Collect the logs permanently so they can be used if another attack occurs",
+        "Collect only the information necessary for investigating the incident, protect it strictly, and delete it when no longer required"
+    ],
+    correct: 3
+},
 
-            {
-                question:
-                    "🤖 AI Recruitment Scenario : A company uses an AI system to screen job applications. The system analyzes applicants' resumes and past hiring data. An HR manager discovers that the system consistently gives lower scores to applicants from a particular group, even though the company cannot identify exactly why. What should the company do?",
+{
+    question: "💳 Financial Data Scenario — Tricky 🔥: A financial app discovers that analyzing customers' transaction patterns could help detect fraud. However, the same analysis could also reveal highly sensitive information about customers' personal lives. What should the company prioritize when designing the system?",
+    answers: [
+        "Allow employees to access the complete transaction history so suspicious activity can be investigated quickly",
+        "Stop analyzing transaction data because privacy risks exist",
+        "Use the minimum information necessary for fraud detection while applying strong safeguards and clearly defining its use",
+        "Collect as much transaction information as possible because fraud prevention is important"
+    ],
+    correct: 2
+},
 
-                answers: [
-                    "Investigate the possible bias, evaluate the system's impact, and correct or replace it before relying on its decisions",
-                    "Continue using the system because it is based on historical company data",
-                    "Remove the demographic information from the final report while continuing to use the existing model",
-                    "Continue using it but manually review applicants with low scores"
-                ],
+{
+    question: "🧑‍💻 Employee Monitoring Scenario — Most Tricky 🔥🔥 : A company introduces software that records employees' computer activity to improve cybersecurity. The software can also capture screenshots and track activity outside working hours because employees sometimes use company laptops at home. What is the most ethically appropriate decision?",
+    answers: [
+        "Continue monitoring outside working hours but delete the screenshots after 24 hours",
+        "Monitor everything because the laptop belongs to the company",
+        "Allow monitoring but inform employees that all activity may be recorded",
+        "Limit monitoring to legitimate work and security purposes, minimize unnecessary collection, and clearly inform employees about the monitoring"
+    ],
+    correct: 3
+},
 
-                correct: 0
-            },
-
-
-            {
-                question:
-                    "📱 Health App Scenario : A health app collects users' sleep patterns, heart rate, and exercise information. A marketing team proposes using this information to identify users who may be interested in health-related products. The privacy policy mentions that data may be used to 'improve user experience.' What should the company do?",
-
-                answers: [
-                    "Use the information only for users who have been using the app for more than six months",
-                    "Determine whether this new use is sufficiently covered by the original notice and obtain appropriate consent if necessary",
-                    "Use the information because marketing can be considered part of improving user experience",
-                    "Use the information after removing users' names"
-                ],
-
-                correct: 1
-            },
-
-
-            {
-                question:
-                    "🚨 Security vs Privacy Scenario : A smart-home company discovers that one of its devices has been hacked. Engineers suggest temporarily collecting detailed user activity logs to identify the attack. However, these logs contain sensitive information about users' daily routines. What is the best ethical approach?",
-
-                answers: [
-                    "Collect all available logs because security should always take priority ",
-                    "Avoid collecting logs because user privacy must never be compromised",
-                    "Collect the logs permanently so they can be used if another attack occurs",
-                    "Collect only the information necessary for investigating the incident, protect it strictly, and delete it when no longer required"
-                ],
-
-                correct: 3
-            },
-
-
-            {
-                question:
-                    "💳 Financial Data Scenario : Tricky 🔥 A financial app discovers that analyzing customers' transaction patterns could help detect fraud. However, the same analysis could also reveal highly sensitive information about customers' personal lives. What should the company prioritize when designing the system?",
-
-                answers: [
-                    "Allow employees to access the complete transaction history so suspicious activity can be investigated quickly",
-                    "Stop analyzing transaction data because privacy risks exist",
-                    "Use the minimum information necessary for fraud detection while applying strong safeguards and clearly defining its use ",
-                    "Collect as much transaction information as possible because fraud prevention is important "
-                ],
-
-                correct: 2
-            },
-
-
-            {
-                question:
-                    "🧑‍💻 Employee Monitoring Scenario : Most Tricky 🔥🔥 A company introduces software that records employees' computer activity to improve cybersecurity. The software can also capture screenshots and track activity outside working hours because employees sometimes use company laptops at home. What is the most ethically appropriate decision?",
-
-                answers: [
-                    "Continue monitoring outside working hours but delete the screenshots after 24 hours",
-                    "Monitor everything because the laptop belongs to the company",
-                    "Allow monitoring but inform employees that all activity may be recorded",
-                    "Limit monitoring to legitimate work and security purposes, minimize unnecessary collection, and clearly inform employees about the monitoring"
-                ],
-
-                correct: 3
-            }
-
-        ]
-
-    }
-
-];
-
-
+            
+    
 
 // =====================================
 // VARIABLES
@@ -703,7 +783,7 @@ function showFinalResult() {
         "score1"
     ).innerText =
         roundScores[0] +
-        " / 5";
+        " / 10";
 
 
     document.getElementById(
@@ -717,7 +797,7 @@ function showFinalResult() {
         "score3"
     ).innerText =
         roundScores[2] +
-        " / 15";
+        " / 10";
 
 
     document.getElementById(
