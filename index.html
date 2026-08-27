@@ -166,8 +166,38 @@
         <p>
             Your result has been submitted successfully.
         </p>
+        <button onclick="showLeaderboard()">
+    🏆 View Leaderboard
+</button>
 
     </div>
+
+</div>
+    <!-- LEADERBOARD -->
+
+<div
+    id="leaderboardScreen"
+    class="screen hidden"
+>
+
+    <h1>🏆 Live Leaderboard</h1>
+
+    <p>
+        Highest score appears first
+    </p>
+
+    <div
+        id="leaderboard"
+        class="leaderboard"
+    >
+
+        Loading leaderboard...
+
+    </div>
+
+    <button onclick="backToResult()">
+        ← Back to Result
+    </button>
 
 </div>
 
