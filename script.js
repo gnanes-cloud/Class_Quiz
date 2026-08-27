@@ -11,7 +11,7 @@
 // paste your Web App URL here.
 
 const GOOGLE_SCRIPT_URL =
-    "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+    "https://script.google.com/macros/s/AKfycbz8TXO1RwMovTjtasTQHW3mAVFmf8vdaW5eeUDO1s1OJY5vXqRDW0pSYjKUb6ttvo7R/exec";
 
 
 // =====================================
