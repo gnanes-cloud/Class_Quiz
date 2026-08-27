@@ -11,7 +11,7 @@
 // paste your Web App URL here.
 
 const GOOGLE_SCRIPT_URL =
-    "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+    "https://script.google.com/macros/s/AKfycbwpH2Y9j7tBWcyeb0vQkIOCuksnowQUuDEKq-m4bb32EbH1N8ctPqeoIuGZNg9amLt9/exec";
 
 
 // =====================================
@@ -973,4 +973,208 @@ function saveResult() {
 
         }
     );
+    // =====================================
+// SHOW LEADERBOARD
+// =====================================
+
+function showLeaderboard() {
+
+    finalScreen.classList.add(
+        "hidden"
+    );
+
+    document
+        .getElementById(
+            "leaderboardScreen"
+        )
+        .classList.remove(
+            "hidden"
+        );
+
+
+    loadLeaderboard();
+}
+
+
+// =====================================
+// LOAD LEADERBOARD
+// =====================================
+
+function loadLeaderboard() {
+
+    const leaderboard =
+        document.getElementById(
+            "leaderboard"
+        );
+
+
+    leaderboard.innerHTML =
+        "Loading leaderboard...";
+
+
+    fetch(GOOGLE_SCRIPT_URL)
+
+        .then(response =>
+            response.json()
+        )
+
+        .then(data => {
+
+            displayLeaderboard(data);
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            leaderboard.innerHTML =
+                "Unable to load leaderboard.";
+
+        });
+}
+
+
+// =====================================
+// DISPLAY LEADERBOARD
+// =====================================
+
+function displayLeaderboard(data) {
+
+    const leaderboard =
+        document.getElementById(
+            "leaderboard"
+        );
+
+
+    leaderboard.innerHTML = "";
+
+
+    if (data.length === 0) {
+
+        leaderboard.innerHTML =
+            "No results yet.";
+
+        return;
+    }
+
+
+    data.forEach(
+        (student, index) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.classList.add(
+                "leader-row"
+            );
+
+
+            if (index === 0) {
+
+                row.classList.add(
+                    "top-one"
+                );
+
+            }
+
+            else if (index === 1) {
+
+                row.classList.add(
+                    "top-two"
+                );
+
+            }
+
+            else if (index === 2) {
+
+                row.classList.add(
+                    "top-three"
+                );
+
+            }
+
+
+            let rank =
+                index + 1;
+
+
+            let medal = "";
+
+
+            if (rank === 1) {
+
+                medal = "🥇";
+
+            }
+
+            else if (rank === 2) {
+
+                medal = "🥈";
+
+            }
+
+            else if (rank === 3) {
+
+                medal = "🥉";
+
+            }
+
+
+            row.innerHTML = `
+
+                <div class="rank">
+                    ${medal} ${rank}
+                </div>
+
+                <div class="player-name">
+
+                    ${student.name}
+
+                    <small>
+                        (${student.registerNumber})
+                    </small>
+
+                </div>
+
+                <div class="player-score">
+
+                    ${student.total}/30
+
+                </div>
+
+            `;
+
+
+            leaderboard.appendChild(
+                row
+            );
+
+        }
+    );
+}
+
+
+// =====================================
+// BACK TO RESULT
+// =====================================
+
+function backToResult() {
+
+    document
+        .getElementById(
+            "leaderboardScreen"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+
+    finalScreen.classList.remove(
+        "hidden"
+    );
+}
 }
