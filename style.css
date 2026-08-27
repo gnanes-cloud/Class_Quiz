@@ -340,3 +340,94 @@ button:disabled {
     }
 
 }
+/* LEADERBOARD */
+
+.leaderboard {
+
+    margin: 25px 0;
+
+    text-align: left;
+
+    max-height: 450px;
+
+    overflow-y: auto;
+}
+
+
+.leader-row {
+
+    display: grid;
+
+    grid-template-columns:
+        60px 1fr 100px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    margin-bottom: 8px;
+
+    background: #f5f5f5;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+}
+
+
+.leader-row.top-one {
+
+    background: #fff3cd;
+
+}
+
+
+.leader-row.top-two {
+
+    background: #e2e3e5;
+
+}
+
+
+.leader-row.top-three {
+
+    background: #f8d7da;
+
+}
+
+
+.rank {
+
+    font-size: 20px;
+
+}
+
+
+.player-name {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.player-score {
+
+    text-align: right;
+}
+
+
+@media(max-width:600px) {
+
+    .leader-row {
+
+        grid-template-columns:
+            45px 1fr 80px;
+
+        font-size: 14px;
+
+    }
+
+}
