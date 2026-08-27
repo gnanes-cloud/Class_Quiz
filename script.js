@@ -11,7 +11,7 @@
 // paste your Web App URL here.
 
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbz8TXO1RwMovTjtasTQHW3mAVFmf8vdaW5eeUDO1s1OJY5vXqRDW0pSYjKUb6ttvo7R/exec";
+    "https://script.google.com/macros/s/AKfycbxtQgNfZWieiBNikCsIFN12HnKJqPR3k-uQxpBVb-QVsPAw0N_9CW0pFvWa6XAxp-7F/exec";
 
 
 // =====================================
@@ -968,7 +968,7 @@ function saveResult() {
 
     if (
         GOOGLE_SCRIPT_URL ===
-        "https://script.google.com/macros/s/AKfycbz8TXO1RwMovTjtasTQHW3mAVFmf8vdaW5eeUDO1s1OJY5vXqRDW0pSYjKUb6ttvo7R/exec"
+        ""
     ) {
 
         console.log(
