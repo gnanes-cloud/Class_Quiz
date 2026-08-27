@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+
+/* =========================
+   BODY
+========================= */
+
 body {
 
     font-family: Arial, sans-serif;
@@ -27,6 +32,10 @@ body {
 }
 
 
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .container {
 
     width: 100%;
@@ -34,6 +43,10 @@ body {
     max-width: 650px;
 }
 
+
+/* =========================
+   SCREEN
+========================= */
 
 .screen {
 
@@ -47,23 +60,37 @@ body {
 
     box-shadow:
         0 10px 30px
-        rgba(0,0,0,0.2);
+        rgba(0, 0, 0, 0.2);
 }
 
+
+/* Hide screens */
 
 .hidden {
 
-    display: none;
+    display: none !important;
 }
 
 
-/* HOME */
+/* =========================
+   HEADINGS
+========================= */
 
 h1 {
 
     margin-bottom: 15px;
 }
 
+
+h2 {
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   PARAGRAPH
+========================= */
 
 .screen > p {
 
@@ -72,6 +99,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+
+/* =========================
+   INPUT
+========================= */
 
 input {
 
@@ -86,10 +117,24 @@ input {
     border-radius: 8px;
 
     font-size: 16px;
+
+    outline: none;
 }
 
 
-/* ROUND INFORMATION */
+input:focus {
+
+    border-color: #667eea;
+
+    box-shadow:
+        0 0 5px
+        rgba(102, 126, 234, 0.3);
+}
+
+
+/* =========================
+   ROUND INFORMATION
+========================= */
 
 .round-info {
 
@@ -111,6 +156,24 @@ input {
     padding: 18px 8px;
 
     border-radius: 12px;
+
+    transition: 0.3s;
+}
+
+
+.round-info div:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.1);
+}
+
+
+.round-info h3 {
+
+    margin-bottom: 8px;
 }
 
 
@@ -124,7 +187,9 @@ input {
 }
 
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
 button {
 
@@ -143,12 +208,16 @@ button {
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 
 button:hover {
 
     opacity: 0.9;
+
+    transform: translateY(-1px);
 }
 
 
@@ -157,10 +226,14 @@ button:disabled {
     background: #aaa;
 
     cursor: not-allowed;
+
+    transform: none;
 }
 
 
-/* QUIZ */
+/* =========================
+   QUIZ TOP
+========================= */
 
 .top {
 
@@ -177,8 +250,14 @@ button:disabled {
 #roundTitle {
 
     font-size: 20px;
+
+    margin: 0;
 }
 
+
+/* =========================
+   TIMER
+========================= */
 
 #timer {
 
@@ -191,10 +270,14 @@ button:disabled {
     border-radius: 20px;
 
     font-weight: bold;
+
+    min-width: 80px;
 }
 
 
-/* PROGRESS */
+/* =========================
+   PROGRESS BAR
+========================= */
 
 .progress {
 
@@ -224,7 +307,9 @@ button:disabled {
 }
 
 
-/* QUESTION */
+/* =========================
+   QUESTION
+========================= */
 
 #questionNumber {
 
@@ -239,10 +324,14 @@ button:disabled {
     margin-bottom: 25px;
 
     font-size: 23px;
+
+    line-height: 1.4;
 }
 
 
-/* ANSWERS */
+/* =========================
+   ANSWERS
+========================= */
 
 #answers {
 
@@ -267,12 +356,20 @@ button:disabled {
     color: #222;
 
     border: 2px solid transparent;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
 }
 
 
 .answer:hover {
 
     background: #e8e8e8;
+
+    transform: none;
 }
 
 
@@ -281,6 +378,8 @@ button:disabled {
     background: #d4edda;
 
     border-color: #28a745;
+
+    color: #155724;
 }
 
 
@@ -289,10 +388,14 @@ button:disabled {
     background: #f8d7da;
 
     border-color: #dc3545;
+
+    color: #721c24;
 }
 
 
-/* RESULT */
+/* =========================
+   RESULT
+========================= */
 
 .result {
 
@@ -317,28 +420,22 @@ button:disabled {
 .result hr {
 
     margin: 20px 0;
+
+    border: none;
+
+    border-top: 1px solid #ddd;
 }
 
 
-/* MOBILE */
+#finalMessage {
 
-@media(max-width:600px) {
+    margin-top: 20px;
+}
 
-    .screen {
 
-        padding: 25px 18px;
-    }
-
-    .round-info {
-
-        grid-template-columns: 1fr;
-    }
-
-    #question {
-
-        font-size: 20px;
-    }
-    /* LEADERBOARD */
+/* =========================
+   LEADERBOARD
+========================= */
 
 .leaderboard {
 
@@ -349,8 +446,12 @@ button:disabled {
     max-height: 450px;
 
     overflow-y: auto;
+
+    padding-right: 5px;
 }
 
+
+/* Individual student row */
 
 .leader-row {
 
@@ -372,62 +473,231 @@ button:disabled {
     border-radius: 10px;
 
     font-weight: bold;
+
+    border: 1px solid #eee;
 }
 
+
+/* First place */
 
 .leader-row.top-one {
 
     background: #fff3cd;
 
+    border: 2px solid #ffc107;
 }
 
+
+/* Second place */
 
 .leader-row.top-two {
 
     background: #e2e3e5;
 
+    border: 2px solid #aaa;
 }
 
+
+/* Third place */
 
 .leader-row.top-three {
 
     background: #f8d7da;
 
+    border: 2px solid #dc3545;
 }
 
+
+/* Rank */
 
 .rank {
 
     font-size: 20px;
 
+    white-space: nowrap;
 }
 
+
+/* Student name */
 
 .player-name {
 
     overflow: hidden;
 
     text-overflow: ellipsis;
+
+    white-space: nowrap;
 }
 
+
+/* Register number */
+
+.player-name small {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: normal;
+
+    margin-top: 3px;
+}
+
+
+/* Score */
 
 .player-score {
 
     text-align: right;
+
+    font-size: 17px;
+
+    color: #333;
 }
 
 
-@media(max-width:600px) {
+/* =========================
+   LEADERBOARD BUTTONS
+========================= */
+
+#leaderboardScreen button {
+
+    margin: 5px;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.leaderboard::-webkit-scrollbar {
+
+    width: 7px;
+}
+
+
+.leaderboard::-webkit-scrollbar-track {
+
+    background: #eee;
+
+    border-radius: 10px;
+}
+
+
+.leaderboard::-webkit-scrollbar-thumb {
+
+    background: #aaa;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 10px;
+
+    }
+
+
+    .screen {
+
+        padding: 25px 18px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .round-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    #question {
+
+        font-size: 20px;
+
+    }
+
+
+    .top {
+
+        gap: 10px;
+
+    }
+
+
+    #roundTitle {
+
+        font-size: 17px;
+
+    }
+
+
+    #timer {
+
+        font-size: 14px;
+
+        padding: 7px 10px;
+
+        min-width: 70px;
+
+    }
+
+
+    /* Mobile leaderboard */
 
     .leader-row {
 
         grid-template-columns:
-            45px 1fr 80px;
+            45px 1fr 75px;
+
+        gap: 7px;
+
+        padding: 12px 8px;
 
         font-size: 14px;
 
     }
 
-}
+
+    .rank {
+
+        font-size: 16px;
+
+    }
+
+
+    .player-score {
+
+        font-size: 14px;
+
+    }
+
+
+    .player-name small {
+
+        font-size: 10px;
+
+    }
+
+
+    #leaderboardScreen button {
+
+        width: 100%;
+
+        margin: 5px 0;
+
+    }
 
 }
