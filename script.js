@@ -1323,8 +1323,7 @@ function displayLeaderboard(
                 <div class="${className}">
 
                     <div class="rank">
-                        ${rankDisplay}
-                        ${rank > 3 ? rank : ""}
+                         ${rankDisplay}
                     </div>
 
                     <div class="player-name">
