@@ -264,7 +264,7 @@ const quizData = [
 
     {
         name: "Round 3 - Hard",
-        marks: 3,
+        marks: 2,
 
         questions: [
 
