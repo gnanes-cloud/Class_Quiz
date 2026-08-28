@@ -265,7 +265,8 @@ const quizData = [
 // VARIABLES
 // =====================================
 
-let currentRound = 0;
+score: 0,
+currentRound: 0
 
 let currentQuestion = 0;
 
