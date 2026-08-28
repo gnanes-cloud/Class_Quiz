@@ -1334,7 +1334,7 @@ function displayLeaderboard(
                         )}
 
                         <small>
-                            Register No:
+                            Reg No:
                             ${escapeHTML(
                                 student.registerNumber ||
                                 "-"
