@@ -8,7 +8,7 @@
 // =====================================
 
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzh8OrF6jltSovWrp7Mf9KhhqSi24t-WhiIPXe-b93QYQ8JFkWWp3D1iDPDbs_mYXm1/exec";
+    "https://script.google.com/macros/s/AKfycbz2YA_hFEKakHJD3efaclcWyEh5jkkPFwiF91t6ytOZdUYudwjG7E227tv1eNVyOdq2/exec";
 
 
 // =====================================
@@ -986,7 +986,7 @@ function saveResult() {
     if (
         !GOOGLE_SCRIPT_URL ||
         !GOOGLE_SCRIPT_URL.includes(
-            "https://script.google.com/macros/s/AKfycbzh8OrF6jltSovWrp7Mf9KhhqSi24t-WhiIPXe-b93QYQ8JFkWWp3D1iDPDbs_mYXm1/exec"
+            "https://script.google.com/macros/s/AKfycbz2YA_hFEKakHJD3efaclcWyEh5jkkPFwiF91t6ytOZdUYudwjG7E227tv1eNVyOdq2/exec"
         )
     ) {
 
