@@ -358,7 +358,7 @@ let totalScore = 0;
 
 let roundScores = [0, 0, 0];
 
-let timeLeft = 15;
+let timeLeft = 60;
 
 let timer = null;
 
@@ -369,9 +369,9 @@ let studentName = "";
 let registerNumber = "";
 
 
-// Maximum score = 10 + 10 + 15 = 35
+// Maximum score = 10 + 10 + 10 = 30
 
-const MAX_SCORE = 35;
+const MAX_SCORE = 30;
 
 
 // =====================================
@@ -564,7 +564,7 @@ function startTimer() {
 
     clearInterval(timer);
 
-    timeLeft = 15;
+    timeLeft = 60;
 
 
     document.getElementById(
@@ -903,7 +903,7 @@ function showFinalResult() {
         "score3"
     ).innerText =
         roundScores[2] +
-        " / 15";
+        " / 10";
 
 
     // Total
